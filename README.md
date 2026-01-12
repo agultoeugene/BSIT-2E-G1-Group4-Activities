@@ -3,3 +3,4 @@ Agulto, Eugene DC.
 Joson, Denise Jillian DG.
 Ganiola, Kian Minellie DC.
 Perez, Andrie DL.
+Capalac, Farah Ice Lee
