@@ -1,5 +1,6 @@
 *{
     margin: 0;
+<<<<<<< HEAD
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -8,6 +9,14 @@
     height: 130px;
     background-color: steelblue;
     
+=======
+}
+
+.nav-container{
+    height: 130px;
+    background-color: steelblue;
+    font-family: Arial, Helvetica, sans-serif;
+>>>>>>> feature/activityhtml
     color:white;
 } 
 
@@ -23,6 +32,7 @@ a{
     margin: 1em;
     width: 100%;
 }
+<<<<<<< HEAD
 .banner {
     height: 200px;
     background-color: blue;
@@ -37,6 +47,9 @@ a{
 .banner p {
     font-size: 1em;
 }
+=======
+
+>>>>>>> feature/activityhtml
 .row {
     width: 100%;
 }
