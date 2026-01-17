@@ -15,7 +15,6 @@ h1 {
     width: 100%;
 }
 
-
 a{
     font-size: 20px;
     margin: 1em;
@@ -29,6 +28,105 @@ a{
 }
 .h1banner {
     padding-top: 70px;
+}
+
+
+body, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #1E90FF;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.image1 {
+  background-image: url("https://www.skillshare.com/blog/wp-content/uploads/2024/04/skillshare-responsive-web-design-101.jpg");
+  background-size: cover;        
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image2 {
+  background-image: url("https://www.reelpaper.com/cdn/shop/articles/5-sustainable-cleaning-tips-for-keeping-your-home-clean-green-reel-talk-892234.jpg?v=1621098068&width=1280");
+  background-size: cover;        
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image3 {
+  background-image: url("https://www.escapeworksdenver.com/wp-content/uploads/The-Importance-Of-Team-Building-For-Your-Company.jpg");
+  background-size: cover;        
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.features-section {
+  text-align: center;
+  padding: 30px 30px;
+  font-family: Arial, sans-serif;
+}
+
+.features-section h2 {
+  margin-bottom: 20px;
+}
+
+.features-container {
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  flex-wrap: wrap;
+}
+
+
+.feature-card {
+  width: 300px;
+  text-align: left;
+}
+
+.image-placeholder {
+  background-color: #ccc;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: #666;
 }
 
 .row {
