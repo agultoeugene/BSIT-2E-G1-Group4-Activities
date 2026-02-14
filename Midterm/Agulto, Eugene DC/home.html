@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Student Task Manager</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<style>
+    .completed {
+        text-decoration: line-through;
+        background-color: #d1e7dd;
+    }
+    
+    .completed td {
+        color: #70d3a5;
+        font-weight: 500;
+    }
+</style>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center text-primary mb-4">Student Task Manager</h1>
+
+        <div class="card p-4 mb-4 shadow">
+            <form id="taskForm">
+                <div class="mb-3">
+                    <input type="text" id="taskName" class="form-control" placeholder="Task Name" />
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" id="taskDesc" class="form-control" placeholder="Task Description" />
+                </div>
+
+                <div class="mb-3">
+                    <input type="date" id="dueDate" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <select id="priority" class="form-select">
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+
+                <small id="err" class="text-danger d-block mt-2"></small>
+            </form>
+        </div>
+
+        <div class="card shadow">
+            <div class="table-responsive">
+                <table class="table table-hover text-center align-middle">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Task</th>
+                            <th>Description</th>
+                            <th>Due Date</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="index.js"></script>
+</body>
+
+</html>
