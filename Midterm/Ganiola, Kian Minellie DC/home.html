@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Task Manager</title>
+
+  <style>
+
+   body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background: #c0dfe7;
+  padding: 20px;
+}
+
+.container {
+  width: 1000px;
+  margin: auto;
+  background: #c0dfe7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px; 
+  margin-bottom: 12px; 
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box; 
+}
+
+textarea {
+  resize: none;
+  height: 70px;
+}
+
+button {
+  padding: 10px 20px; 
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: white;
+  margin: 2px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.add-btn { 
+    width: 100%; 
+    background: #007bff; 
+    font-size: 16px; }
+    
+.deleteBtn { background: red; }
+.doneBtn { background: green; } 
+.editBtn { background: yellowgreen; }
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;  
+  text-align: center;
+  box-sizing: border-box;
+}
+
+th {
+  background: #f0f0f0;
+}
+
+td[contenteditable="true"] {
+  background: #fff9c4;
+}
+
+.completed {
+  background: #d4edda;
+  text-decoration: line-through;
+  color: gray;
+}
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Student Task Manager</h2>
+
+  <label>Task Title</label>
+  <input type="text" id="title">
+
+  <label>Task Description</label>
+  <textarea id="description"></textarea>
+
+  <label>Priority</label>
+  <select id="priority">
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+
+  <label>Due Date</label>
+  <input type="date" id="dueDate">
+
+  <button class="add-btn" onclick="addTask()">Save Task</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody id="taskList"></tbody>
+  </table>
+</div>
+
+<script>
+let editRow = null;
+
+// addtask
+function addTask() {
+
+  let title = document.getElementById("title").value;
+  let description = document.getElementById("description").value;
+  let priority = document.getElementById("priority").value;
+  let dueDate = document.getElementById("dueDate").value;
+
+  if (title === "" || description === "" || dueDate === "") {
+    alert("Please fill up all fields!");
+    return;
+  }
+  
+
+  if (editRow !== null) {
+    editRow.cells[0].innerText = title;
+    editRow.cells[1].innerText = description;
+    editRow.cells[2].innerText = priority;
+    editRow.cells[3].innerText = dueDate;
+
+    editRow = null;
+    document.querySelector(".add-btn").innerText = "Save Task";
+    clearForm();
+    return;
+  }
+
+  let table = document.getElementById("taskList");
+  let row = table.insertRow();
+
+
+  // where data stores
+  row.insertCell(0).innerHTML = `<td contenteditable="true">${title}</td>`;
+  row.insertCell(1).innerHTML = `<td contenteditable="true">${description}</td>`;
+  row.insertCell(2).innerHTML = `<td contenteditable="true">${priority}</td>`;
+  row.insertCell(3).innerHTML = `<td contenteditable="true">${dueDate}</td>`;
+  row.insertCell(4).innerHTML = `<td contenteditable="true">Pending</td>`;
+
+  row.insertCell(5).innerHTML = `
+    <button class="doneBtn" onclick="toggleDone(this)">Done</button>
+    <button class="editBtn" onclick="editTask(this)">Edit</button>
+    <button class="deleteBtn" onclick="deleteTask(this)">Delete</button>
+  `;
+
+  clearForm();
+}
+//clear
+function clearForm() {
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("dueDate").value = "";
+}
+//delete
+function deleteTask(btn) {
+  btn.parentNode.parentNode.remove();
+}
+//done
+function toggleDone(btn) {
+  let row = btn.parentNode.parentNode;
+  row.classList.toggle("completed");
+
+  if (row.classList.contains("completed")) {
+    row.cells[4].innerText = "Completed";
+  } else {
+    row.cells[4].innerText = "Pending";
+    btn.innerText = "Done";
+  }
+}
+//edit
+function editTask(btn) {
+  editRow = btn.parentNode.parentNode;
+
+  document.getElementById("title").value = editRow.cells[0].innerText;
+  document.getElementById("description").value = editRow.cells[1].innerText;
+  document.getElementById("priority").value = editRow.cells[2].innerText;
+  document.getElementById("dueDate").value = editRow.cells[3].innerText;
+
+  document.querySelector(".add-btn").innerText = "Update Task";
+}
+</script>
+
+
+</body>
+</html>
